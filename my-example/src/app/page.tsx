@@ -1,29 +1,41 @@
-import Image from "next/image";
-import { getElementProvider } from "./utils/elementProviderFactory";
+"use client" 
+
+import factory from "@/lib/io/ep/factory";
+import { TextField } from "@sitecore-jss/sitecore-jss-nextjs";
+
 
 export default function Home() {
+  const ep = factory();
 
-  const ep = getElementProvider();
+  type Item = { fields: { content: TextField } }
+
+  const item : Item = { fields: { content: { value: "Find in-depth information about Next.js features and API." } } }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          {ep.text('Get started by editing&nbsp')}
+          {ep.text({ value : "Get started by editing&nbsp"})}
           <code className="font-mono font-bold">
-            {ep.text('src/app/page.tsx')}
-            </code>
+            {ep.text({ value: "src/app/page.tsx" })}
+          </code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+            rel="noopener noreferrer">
 
-            {ep.image({ src: '/vercel.svg', alt: 'Vercel Logo', className:'dark:invert', width:100, height:24, priority: true })}
+            {ep.text({ value : "By"})}{" "}
+            {ep.image({
+              src: "/vercel.svg",
+              alt: "Vercel Logo",
+              className: "dark:invert",
+              width: 100,
+              height: 24,
+              priority: true,
+            })}
             {/* <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -37,9 +49,15 @@ export default function Home() {
       </div>
 
       <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        
-        {ep.image({className: 'relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert', src: '/next.svg', alt:'Next.js Logo', width:500, height:500, priority:true  })}
-        
+        {ep.image({
+          className:
+            "relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert",
+          src: "/next.svg",
+          alt: "Next.js Logo",
+          width: 500,
+          height: 500,
+          priority: true,
+        })}
 
         {/* <Image
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
@@ -59,13 +77,13 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
+            {ep.text({ value: "Docs" })}{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
           </h2>
           <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            {ep.text('Find in-depth information about Next.js features and API.')}
+            {ep.text({ value: "Find in-depth information about Next.js features and API." })}
           </p>
         </a>
 
@@ -76,13 +94,13 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
+            {ep.text({ value: "Learn"})}{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
           </h2>
           <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            {ep.text('Learn about Next.js in an interactive course with&nbsp;quizzes!')}
+            {ep.text({ value: "Learn about Next.js in an interactive course with&nbsp;quizzes!"})}
           </p>
         </a>
 
@@ -93,13 +111,13 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className="mb-3 text-2xl font-semibold">
-            {ep.text('Templates')}{" "}
+            {ep.text({ value : "Templates"  })}{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
           </h2>
           <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            {ep.text('Explore starter templates for Next.js.')}
+            {ep.text({ value : "Explore starter templates for Next.js." })}
           </p>
         </a>
 
@@ -110,13 +128,13 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
+            {ep.text({ value : "Deploy" })}{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
           </h2>
           <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            {ep.text('Instantly deploy your Next.js site to a shareable URL with Vercel.')}
+            {ep.text({ value: "Instantly deploy your Next.js site to a shareable URL with Vercel." })}
           </p>
         </a>
       </div>
